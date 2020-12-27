@@ -1,21 +1,10 @@
-﻿using Newtonsoft.Json;
-using SSIDit_GUI.Core;
+﻿using SSIDit_GUI.Core;
 using SSIDit_GUI.CustomElements;
 using SSIDit_GUI.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SSIDit_GUI.Views
 {
@@ -39,7 +28,7 @@ namespace SSIDit_GUI.Views
         private void BuildSSIDs(List<SSID> ssidList)
         {
             SSIDViewList.Children.Clear();
-            
+
             foreach (var ssid in ssidList)
                 SSIDViewList.Children.Add(new SSIDBox(ssid));
         }

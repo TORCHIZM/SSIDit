@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
 using SSIDit.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SSIDit.Controllers
 {
@@ -43,7 +39,7 @@ namespace SSIDit.Controllers
             var ssidList = SSID.GetAll();
             var SortedList = ssidList.OrderBy(o => o.Votes.Where(x => x.Type == 0).ToList().Count).ToList();
             SortedList.Reverse();
-            
+
             yield return SortedList;
         }
 
@@ -62,7 +58,7 @@ namespace SSIDit.Controllers
 
             var ssid = ssidList.Where(x => x.Name == name).FirstOrDefault();
 
-            if(ssid == null)
+            if (ssid == null)
                 yield return SSID.New(name);
             else
                 yield return new ErrorMessage("SSID already exists.");

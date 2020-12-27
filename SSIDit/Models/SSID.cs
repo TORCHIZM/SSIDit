@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace SSIDit.Models
 {
@@ -59,7 +57,8 @@ namespace SSIDit.Models
             var ssidList = Database.MySQL.Select<SSID>("SELECT * FROM ssid");
             var votelist = Models.Votes.GetAll();
 
-            votelist.ForEach(x => {
+            votelist.ForEach(x =>
+            {
                 ssidList.Where(y => y.ID == x.Ssid).Select(x => x).FirstOrDefault().Votes.Add(x);
             });
 

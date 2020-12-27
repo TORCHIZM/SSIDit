@@ -5,6 +5,13 @@ Reddit but voting SSIDs
   - All users can show, upvote and downvote SSIDs
   - Using MySQL/MariaDB
 
+# Setup
+  - Install "MaterialDesignThemes"
+  - Install "Newtonsoft.Json"
+  - Install "MySql.Data"
+  - Run Server and configure ip/ports
+  - Run GUI
+
 # What will the program do?
 Nothing, an empty project.
 
