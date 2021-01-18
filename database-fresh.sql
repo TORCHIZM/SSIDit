@@ -16,14 +16,26 @@
 CREATE DATABASE IF NOT EXISTS `ssidit` /*!40100 DEFAULT CHARACTER SET utf16 COLLATE utf16_turkish_ci */;
 USE `ssidit`;
 
--- tablo yapısı dökülüyor ssidit.ssid
-CREATE TABLE IF NOT EXISTS `ssid` (
+-- tablo yapısı dökülüyor ssidit.comments
+CREATE TABLE IF NOT EXISTS `comments` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `identity` int(11) NOT NULL DEFAULT '0',
+  `ssid` int(11) NOT NULL DEFAULT '0',
+  `content` text COLLATE utf16_turkish_ci,
+  `createdat` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedat` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf16 COLLATE=utf16_turkish_ci;
+
+-- Veri çıktısı seçilmemişti
+-- tablo yapısı dökülüyor ssidit.ssids
+CREATE TABLE IF NOT EXISTS `ssids` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(32) COLLATE utf16_turkish_ci NOT NULL DEFAULT '0',
   `CreatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UpdatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf16 COLLATE=utf16_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf16 COLLATE=utf16_turkish_ci;
 
 -- Veri çıktısı seçilmemişti
 -- tablo yapısı dökülüyor ssidit.votes
@@ -35,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `votes` (
   `CreatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UpdatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf16 COLLATE=utf16_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf16 COLLATE=utf16_turkish_ci;
 
 -- Veri çıktısı seçilmemişti
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

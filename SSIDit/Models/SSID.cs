@@ -1,48 +1,52 @@
-﻿using System;
+﻿using SSIDit.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
 namespace SSIDit.Models
 {
-    public class SSID
+    public class SSID : IModel
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public List<Votes> Votes { get; set; }
+        public List<Vote> Votes { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        // Parameterless constructor for System.Active class
         public SSID()
         {
-            this.Votes = new List<Votes>();
+            this.Votes = new List<Vote>();
         }
 
         public SSID(string name)
         {
             Name = name;
-            this.Votes = new List<Votes>();
+            this.Votes = new List<Vote>();
             CreatedAt = DateTime.Now;
             UpdatedAt = DateTime.Now;
         }
 
         public void Save()
         {
-            string properties = "";
+            MySQLCommands.Update(this);
+        }
 
-            foreach (PropertyInfo prop in GetType().GetProperties())
-                if (prop.GetValue(this, null).GetType() != typeof(DateTime))
-                    properties += prop.GetValue(this, null).GetType() == typeof(int) ? $"{prop.Name}={prop.GetValue(this, null)}," : $"{prop.Name}=\"{prop.GetValue(this, null)}\",";
+        public void Delete()
+        {
+            MySQLCommands.Delete(this);
+        }
 
-            properties += "ID=ID";
-
-            Database.MySQL.Execute($"UPDATE ssid SET {properties} WHERE id={this.ID}");
+        public static SSID New(string name)
+        {
+            var ssid = new SSID(name);
+            MySQLCommands.Insert(ssid);
+            return ssid;
         }
 
         public void UpVote(int identity)
         {
-            this.Votes.Add(Models.Votes.New(identity, ID, 1));
+            this.Votes.Add(Vote.New(identity, ID, 1));
         }
 
         public void DownVote(int identity)
@@ -54,8 +58,8 @@ namespace SSIDit.Models
 
         public static List<SSID> GetAll()
         {
-            var ssidList = Database.MySQL.Select<SSID>("SELECT * FROM ssid");
-            var votelist = Models.Votes.GetAll();
+            var ssidList = MySQL.Select<SSID>("SELECT * FROM ssid");
+            var votelist = Vote.GetAll();
 
             votelist.ForEach(x =>
             {
@@ -67,16 +71,10 @@ namespace SSIDit.Models
 
         public static SSID Get(int id)
         {
-            var votes = Models.Votes.GetBySSID(id);
-            var ssid = Database.MySQL.Select<SSID>($"SELECT * FROM ssid WHERE id={id}").FirstOrDefault();
+            var votes = Vote.GetBySSID(id);
+            var ssid = MySQL.Select<SSID>($"SELECT * FROM ssid WHERE id={id}").FirstOrDefault();
             ssid.Votes = votes;
             return ssid;
-        }
-
-        public static SSID New(string name)
-        {
-            Database.MySQL.Execute($"INSERT INTO ssid (name) VALUES (\"{name}\")");
-            return new SSID(name);
         }
     }
 }

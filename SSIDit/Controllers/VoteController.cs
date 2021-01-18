@@ -12,10 +12,10 @@ namespace SSIDit.Controllers
         [HttpGet("up")]
         public IEnumerable<object> UpVote(int id, int identity)
         {
-            var vote = Votes.GetBySSID(identity, id).FirstOrDefault();
+            var vote = Vote.GetBySSID(identity, id).FirstOrDefault();
 
             if (vote == null)
-                yield return Votes.New(identity, id, 1);
+                yield return Vote.New(identity, id, 1);
             else
             {
                 vote.Delete();
@@ -26,10 +26,10 @@ namespace SSIDit.Controllers
         [HttpGet("down")]
         public IEnumerable<object> DownVote(int identity, int id)
         {
-            var vote = Votes.GetBySSID(identity, id).FirstOrDefault();
+            var vote = Vote.GetBySSID(identity, id).FirstOrDefault();
 
             if (vote == null)
-                yield return Votes.New(identity, id, 0);
+                yield return Vote.New(identity, id, 0);
             else
             {
                 vote.Delete();
@@ -40,7 +40,7 @@ namespace SSIDit.Controllers
         [HttpGet("revert")]
         public IEnumerable<object> RevertVote(int identity, int id)
         {
-            var vote = Votes.GetBySSID(identity, id).FirstOrDefault();
+            var vote = Vote.GetBySSID(identity, id).FirstOrDefault();
 
             if (vote == null)
                 yield return Ok("Vote not found");

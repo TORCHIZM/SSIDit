@@ -46,7 +46,7 @@ namespace SSIDit.Database
                 obj = Activator.CreateInstance<T>();
 
                 foreach (PropertyInfo prop in obj.GetType().GetProperties())
-                    if (prop.PropertyType != typeof(List<Votes>))
+                    if (prop.PropertyType != typeof(List<Vote>))
                         if (!object.Equals(dr[prop.Name], DBNull.Value))
                             prop.SetValue(obj, dr[prop.Name], null);
 
