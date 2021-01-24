@@ -7,24 +7,36 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSIDit", "SSIDit\SSIDit.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSIDit GUI", "SSIDit GUI\SSIDit GUI.csproj", "{FF82814C-4583-43C8-9A23-E6E1805E08DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SsidItTests", "SsidItTests\SsidItTests.csproj", "{4B6F20D4-F20A-4A26-823A-71D16D8D8230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SsidItTests", "SsidItTests\SsidItTests.csproj", "{4B6F20D4-F20A-4A26-823A-71D16D8D8230}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		OnlyClient|Any CPU = OnlyClient|Any CPU
+		OnlyServer|Any CPU = OnlyServer|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{02E3C43C-F6FF-4F6D-8B2C-88BBFEBEFE35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02E3C43C-F6FF-4F6D-8B2C-88BBFEBEFE35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E3C43C-F6FF-4F6D-8B2C-88BBFEBEFE35}.OnlyClient|Any CPU.ActiveCfg = OnlyClient|Any CPU
+		{02E3C43C-F6FF-4F6D-8B2C-88BBFEBEFE35}.OnlyServer|Any CPU.ActiveCfg = OnlyServer|Any CPU
+		{02E3C43C-F6FF-4F6D-8B2C-88BBFEBEFE35}.OnlyServer|Any CPU.Build.0 = OnlyServer|Any CPU
 		{02E3C43C-F6FF-4F6D-8B2C-88BBFEBEFE35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02E3C43C-F6FF-4F6D-8B2C-88BBFEBEFE35}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FF82814C-4583-43C8-9A23-E6E1805E08DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FF82814C-4583-43C8-9A23-E6E1805E08DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF82814C-4583-43C8-9A23-E6E1805E08DA}.OnlyClient|Any CPU.ActiveCfg = OnlyClient|Any CPU
+		{FF82814C-4583-43C8-9A23-E6E1805E08DA}.OnlyClient|Any CPU.Build.0 = OnlyClient|Any CPU
+		{FF82814C-4583-43C8-9A23-E6E1805E08DA}.OnlyServer|Any CPU.ActiveCfg = OnlyServer|Any CPU
 		{FF82814C-4583-43C8-9A23-E6E1805E08DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF82814C-4583-43C8-9A23-E6E1805E08DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4B6F20D4-F20A-4A26-823A-71D16D8D8230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4B6F20D4-F20A-4A26-823A-71D16D8D8230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B6F20D4-F20A-4A26-823A-71D16D8D8230}.OnlyClient|Any CPU.ActiveCfg = OnlyClient|Any CPU
+		{4B6F20D4-F20A-4A26-823A-71D16D8D8230}.OnlyClient|Any CPU.Build.0 = OnlyClient|Any CPU
+		{4B6F20D4-F20A-4A26-823A-71D16D8D8230}.OnlyServer|Any CPU.ActiveCfg = OnlyServer|Any CPU
+		{4B6F20D4-F20A-4A26-823A-71D16D8D8230}.OnlyServer|Any CPU.Build.0 = OnlyServer|Any CPU
 		{4B6F20D4-F20A-4A26-823A-71D16D8D8230}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B6F20D4-F20A-4A26-823A-71D16D8D8230}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

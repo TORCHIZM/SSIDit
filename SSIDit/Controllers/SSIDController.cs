@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
 using SSIDit.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +52,7 @@ namespace SSIDit.Controllers
             yield return ssid;
         }
 
-        [HttpGet("new")]
+        [HttpPost("new")]
         public IEnumerable<object> PushSSID(string name)
         {
             var ssidList = SSID.GetAll();

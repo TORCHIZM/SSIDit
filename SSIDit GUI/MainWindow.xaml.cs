@@ -23,6 +23,8 @@ namespace SSIDit_GUI
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
+            ServicePointManager.ServerCertificateValidationCallback +=
+                (cSender, cert, chain, sslPolicyErrors) => true;
 
             PushSSIDs();
 
@@ -34,7 +36,7 @@ namespace SSIDit_GUI
             var accessPointList = await AccessPoint.GetSignalOfNetworks();
 
             foreach (var accessPoint in accessPointList)
-                API.Get<SSID>("ssid/new", $"name={accessPoint.SSID}");
+                await API.Get<SSID>("ssid/new", $"name={accessPoint.SSID}");
         }
 
         public void SetView(Page page) => MainFrame.Navigate(page);

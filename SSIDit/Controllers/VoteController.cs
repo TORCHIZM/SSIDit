@@ -9,7 +9,7 @@ namespace SSIDit.Controllers
     [ApiController]
     public class VoteController : ControllerBase
     {
-        [HttpGet("up")]
+        [HttpPost("up")]
         public IEnumerable<object> UpVote(int id, int identity)
         {
             var vote = Vote.GetBySSID(identity, id).FirstOrDefault();
@@ -23,7 +23,7 @@ namespace SSIDit.Controllers
             }
         }
 
-        [HttpGet("down")]
+        [HttpPost("down")]
         public IEnumerable<object> DownVote(int identity, int id)
         {
             var vote = Vote.GetBySSID(identity, id).FirstOrDefault();
@@ -37,7 +37,7 @@ namespace SSIDit.Controllers
             }
         }
 
-        [HttpGet("revert")]
+        [HttpPost("revert")]
         public IEnumerable<object> RevertVote(int identity, int id)
         {
             var vote = Vote.GetBySSID(identity, id).FirstOrDefault();

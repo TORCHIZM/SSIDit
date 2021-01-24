@@ -1,4 +1,5 @@
-﻿using SSIDit.Database;
+﻿using SSIDit.Attributes;
+using SSIDit.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +11,28 @@ namespace SSIDit.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
+
+        [IncludeColumn(false)]
         public List<Vote> Votes { get; set; }
+        [IncludeColumn(false)]
+        public List<Comment> Comments { get; set; }
+
+        [ColumnName("created_at")]
         public DateTime CreatedAt { get; set; }
+        [ColumnName("updated_at")]
         public DateTime UpdatedAt { get; set; }
 
         public SSID()
         {
             this.Votes = new List<Vote>();
+            this.Comments = new List<Comment>();
         }
 
         public SSID(string name)
         {
             Name = name;
             this.Votes = new List<Vote>();
+            this.Comments = new List<Comment>();
             CreatedAt = DateTime.Now;
             UpdatedAt = DateTime.Now;
         }
@@ -58,12 +68,12 @@ namespace SSIDit.Models
 
         public static List<SSID> GetAll()
         {
-            var ssidList = MySQL.Select<SSID>("SELECT * FROM ssid");
+            var ssidList = MySQLCommands.Select<SSID>("SELECT * FROM ssids");
             var votelist = Vote.GetAll();
 
             votelist.ForEach(x =>
             {
-                ssidList.Where(y => y.ID == x.Ssid).Select(x => x).FirstOrDefault().Votes.Add(x);
+                ssidList.Where(y => y.ID == x.Ssid).FirstOrDefault().Votes.Add(x);
             });
 
             return ssidList;
@@ -72,7 +82,7 @@ namespace SSIDit.Models
         public static SSID Get(int id)
         {
             var votes = Vote.GetBySSID(id);
-            var ssid = MySQL.Select<SSID>($"SELECT * FROM ssid WHERE id={id}").FirstOrDefault();
+            var ssid = MySQLCommands.Select<SSID>($"SELECT * FROM ssids WHERE id={id}").FirstOrDefault();
             ssid.Votes = votes;
             return ssid;
         }

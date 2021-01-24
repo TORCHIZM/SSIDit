@@ -95,5 +95,10 @@ namespace SSIDit_GUI.CustomElements
             VisualVote = UpVote - DownVote;
             VoteCount.Text = $"{VisualVote}";
         }
+
+        private void SendCommentButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

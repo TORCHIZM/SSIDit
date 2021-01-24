@@ -36,6 +36,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'OnlyClient|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\OnlyClient\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'OnlyServer|AnyCPU'">
+    <OutputPath>bin\OnlyServer\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialDesignColors, Version=2.0.0.2312, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.2.0.0-ci2312\lib\net452\MaterialDesignColors.dll</HintPath>
@@ -67,13 +80,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\API.cs" />
+    <Compile Include="Core\DateHelper.cs" />
     <Compile Include="Core\Utils.cs" />
     <Compile Include="CustomElements\SSIDBox.xaml.cs">
       <DependentUpon>SSIDBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomElements\SSIDComment.xaml.cs">
+      <DependentUpon>SSIDComment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccessPoint.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\FeedType.cs" />
     <Compile Include="Models\SSID.cs" />
-    <Compile Include="Models\Votes.cs" />
+    <Compile Include="Models\Vote.cs" />
+    <Compile Include="Models\VoteType.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -81,6 +101,10 @@
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomElements\SSIDBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomElements\SSIDComment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

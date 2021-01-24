@@ -2,7 +2,7 @@
 
 namespace SSIDit_GUI.Models
 {
-    public class Votes
+    public class Vote
     {
         public int ID { get; set; }
         public int Identity { get; set; }

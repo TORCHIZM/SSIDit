@@ -11,13 +11,13 @@ namespace SSIDit.Controllers
     [ApiController]
     public class CommentController : Controller
     {
-        [HttpGet("new")]
-        public IEnumerable<object> PushComment(int identity, int ssid, string content)
+        [HttpPost("new")]
+        public IEnumerable<object> PushComment(int identity, int ssid, string author, string content)
         {
-            yield return Comment.New(identity, ssid, content);
+            yield return Comment.New(identity, ssid, content, author);
         }
 
-        [HttpGet("edit")]
+        [HttpPost("edit")]
         public IEnumerable<object> EditComment(int identity, int ssid, string oldContent, string newContent)
         {
             var comment = Comment.GetByConstant($"identity={identity} AND ssid={ssid} AND content=\"{oldContent}\"").FirstOrDefault();
@@ -26,7 +26,7 @@ namespace SSIDit.Controllers
             yield return comment;
         }
 
-        [HttpGet("delete")]
+        [HttpDelete("delete")]
         public IEnumerable<object> DeleteComment(int identity, int ssid, string content)
         {
             var comment = Comment.GetByConstant($"identity={identity} AND ssid={ssid} AND content=\"{content}\"").FirstOrDefault();

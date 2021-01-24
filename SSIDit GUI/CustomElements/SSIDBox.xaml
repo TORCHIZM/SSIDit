@@ -7,27 +7,28 @@
              mc:Ignorable="d"
              Margin="8">
 
-        <Grid>
+    <Grid>
         <Border Width="600"
-                Height="64"
                 CornerRadius="8"
                 Background="#3A1772">
             <Grid>
-                <TextBlock x:Name="SSIDText"
+                <StackPanel>
+                    <TextBlock x:Name="SSIDText"
                            Text="{Binding Ssid.Name}"
                            Foreground="White"
                            Margin="8"
                            FontSize="24"
                            TextWrapping="Wrap"
                            VerticalAlignment="Center"/>
-                <StackPanel HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Orientation="Horizontal">
-                    <Border Background="Gray"
+                    <StackPanel HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal"
+                                Margin="0 0 0 8">
+                        <Border Background="Gray"
                             Width="2"
                             Height="32"
                             CornerRadius="1"/>
-                    <TextBlock x:Name="VoteCount"
+                        <TextBlock x:Name="VoteCount"
                                Text="{Binding Path=VisualVote, Mode=OneWay}"
                                Foreground="White"
                                TextAlignment="Center"
@@ -35,35 +36,101 @@
                                Margin="8 0 0 0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"/>
-                    <Ellipse Height="2" Width="2"/>
-                    <StackPanel Margin="16 0 16 0">
-                        <Button x:Name="UpVoteButton"
+                        <Ellipse Height="2" Width="2"/>
+                        <StackPanel Margin="16 0 16 0">
+                            <Button x:Name="UpVoteButton"
                                 Click="UpVoteButton_Click"
                                 Style="{StaticResource MaterialDesignIconButton}"
                                 ToolTip="Upvote this SSID"
                                 Background="Transparent"
                                 Width="14"
                                 Height="14">
-                            <materialDesign:PackIcon Kind="ArrowUp"
+                                <materialDesign:PackIcon Kind="ArrowUp"
                                                      VerticalAlignment="Center"
                                                      VerticalContentAlignment="Center"
                                                      Width="14"
                                                      Height="14"/>
-                        </Button>
-                        <Ellipse Height="2" Width="2"/>
-                        <Button x:Name="DownVoteButton"
+                            </Button>
+                            <Ellipse Height="2" Width="2"/>
+                            <Button x:Name="DownVoteButton"
                                 Click="DownVoteButton_Click"
                                 Style="{StaticResource MaterialDesignIconButton}"
                                 ToolTip="Downvote this SSID"
                                 Background="Transparent"
                                 Width="14"
                                 Height="14">
-                            <materialDesign:PackIcon Kind="ArrowDown"
+                                <materialDesign:PackIcon Kind="ArrowDown"
                                                      VerticalAlignment="Center"
                                                      VerticalContentAlignment="Center"
                                                      Width="14"
                                                      Height="14"/>
-                        </Button>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Margin="16 0">
+                        <TextBox x:Name="CommentBox"
+                                 TextWrapping="Wrap"
+                                 Margin="0 0 0 8"
+                                 Foreground="White"
+                                 FontSize="16"/>
+                        <Button x:Name="SendCommentButton"
+                                Click="SendCommentButton_Click"
+                                Content="Send"
+                                Width="64"
+                                Height="24"
+                                HorizontalAlignment="Right"/>
+                    </StackPanel>
+                    <StackPanel Margin="16"
+                                HorizontalAlignment="Left">
+                        <Border Width="Auto"
+                                Height="Auto"
+                                CornerRadius="8"
+                                Background="White">
+                            <StackPanel HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="6 4"
+                                        Orientation="Horizontal"
+                                        MaxWidth="600">
+                                <StackPanel HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            MaxWidth="600">
+                                    <TextBlock Text="ervlşkmreklgfnmregfokremgkolşremgşorem erlkjfgmrekg ekrgmklremgklremkglmregem welkjngnlkewg"
+                                               FontSize="13"
+                                               MaxWidth="580"
+                                               Margin="0 0 0 2"
+                                               TextWrapping="Wrap"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="TORCHIZM"
+                                                   FontSize="10"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Bottom"
+                                                   Margin="0 0 4 0"
+                                                   Foreground="Gray"/>
+                                        <Ellipse Width="4" Height="4"
+                                                 Fill="LightGray"
+                                                 Margin="0 1 4 0"
+                                                 VerticalAlignment="Center"/>
+                                        <TextBlock Text="1 hour ago"
+                                                   FontSize="10"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Bottom"
+                                                   Foreground="Gray"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Margin="8 0 0 0">
+                                    <Button Style="{StaticResource MaterialDesignIconButton}"
+                                            Height="32"
+                                            Width="32"
+                                            Background="LightGray">
+                                        <materialDesign:PackIcon Kind="Bin"
+                                                                 Width="24"
+                                                                 Height="24"
+                                                                 VerticalAlignment="Center"
+                                                                 HorizontalAlignment="Center"/>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
                     </StackPanel>
                 </StackPanel>
             </Grid>

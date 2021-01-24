@@ -50,17 +50,17 @@ namespace SSIDit.Models
 
         public static List<Vote> GetAll()
         {
-            return MySQL.Select<Vote>("SELECT * FROM votes");
+            return MySQLCommands.Select<Vote>("SELECT * FROM votes");
         }
 
         public static List<Vote> GetBySSID(int id)
         {
-            return MySQL.Select<Vote>($"SELECT * FROM votes WHERE ssid={id}");
+            return MySQLCommands.Select<Vote>($"SELECT * FROM votes WHERE ssid={id}");
         }
 
         public static List<Vote> GetBySSID(int identity, int id)
         {
-            return MySQL.Select<Vote>($"SELECT * FROM votes WHERE Ssid={id} AND Identity={identity}");
+            return MySQLCommands.Select<Vote>($"SELECT * FROM votes WHERE Ssid={id} AND Identity={identity}");
         }
     }
 }
