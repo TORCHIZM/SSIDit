@@ -33,10 +33,11 @@ namespace SSIDit_GUI
 
         public async void PushSSIDs()
         {
+            SSIDController ssidController = new SSIDController();
             var accessPointList = await AccessPoint.GetSignalOfNetworks();
 
             foreach (var accessPoint in accessPointList)
-                await API.Get<SSID>("ssid/new", $"name={accessPoint.SSID}");
+                ssidController.CreateSSID(accessPoint.SSID);
         }
 
         public void SetView(Page page) => MainFrame.Navigate(page);

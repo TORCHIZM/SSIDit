@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using SSIDit.Core;
 using SSIDit.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,14 +56,8 @@ namespace SSIDit.Controllers
         [HttpPost("new")]
         public IEnumerable<object> PushSSID(string name)
         {
-            var ssidList = SSID.GetAll();
-
-            var ssid = ssidList.Where(x => x.Name == name).FirstOrDefault();
-
-            if (ssid == null)
-                yield return SSID.New(name);
-            else
-                yield return new ErrorMessage("SSID already exists.");
+            AuthenticatableSSIDProxy ssidProxy = new AuthenticatableSSIDProxy();
+            return ssidProxy.CreateSSID(name);
         }
     }
 }

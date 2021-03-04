@@ -81,6 +81,7 @@
     </ApplicationDefinition>
     <Compile Include="Core\API.cs" />
     <Compile Include="Core\DateHelper.cs" />
+    <Compile Include="Core\SSIDController.cs" />
     <Compile Include="Core\Utils.cs" />
     <Compile Include="CustomElements\SSIDBox.xaml.cs">
       <DependentUpon>SSIDBox.xaml</DependentUpon>
